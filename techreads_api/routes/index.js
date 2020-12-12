@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 // CSWDConf API version 1.0
+var users =[
+    {
+        "id": "1",
+        "username": ["David Flanagan"], 
+        "password" : "Pa$$w0rd",
+        //this should be corrected once interests have been defined
+        "interests": [5,4],
+    }
+]
 
 var books =[
     {
@@ -271,7 +280,8 @@ var books =[
     }
 ]
 
-var interests = []
+//added to user instead
+//var interests = []
 
 var history = [
     {"user":"anon", "book":1, "date": new Date()}
@@ -283,6 +293,11 @@ router.get('/', function(req, res, next) {
 });
 
 // ENDPOINTS
+/* GET all details of all users */
+router.get('/users', function(req, res) { 
+    users.length==0 ? res.status(404): res.status(200);
+    res.send(users);
+})
 
 /* GET all details of all books */
 router.get('/books', function(req, res) { 

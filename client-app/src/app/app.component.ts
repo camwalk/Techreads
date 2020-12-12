@@ -17,8 +17,8 @@ export class AppComponent implements OnInit{
   }
 
   getUsers() {
-    //may need changed, needs to match end point of api
-    this.httpClient.get('https://localhost:3000/users').subscribe(response => {
+    //may need changed, needs to match end point of api (may also need to change to https)
+    this.httpClient.get('http://localhost:3000/users').subscribe(response => {
       this.users = response;
     }, error => {
       console.log(error);
