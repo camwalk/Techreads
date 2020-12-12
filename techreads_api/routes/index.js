@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var session = require('express-session');
+var passport = require('passport');
+var bodyParser = require('body-parser');
+var LocalStrategy = require('passport-local').Strategy;
+
 
 // CSWDConf API version 1.0
 var users =[
@@ -301,6 +306,77 @@ router.get('/users', function(req, res) {
     res.send(users);
 })
 
+/* GET user by id */
+router.get('/users/:id', function(req, res) { 
+    var selectedUser = users.filter(function(user) {
+      return user.id == req.params["id"];
+    });
+    selectedUser.length==0 ? res.status(404): res.status(200);
+    res.send(selectedUser);
+})
+
+/* GET user by username */
+router.get('/users/:username', function(req, res) { 
+    var selectedUser = users.filter(function(user) {
+      return user.id == req.params["id"];
+    });
+    selectedUser.length==0 ? res.status(404): res.status(200);
+    res.send(selectedUser);
+})
+
+/* authenticate user */
+passport.serializeUser(function(user, done) {
+    if(user) done(null, user);
+});
+  
+passport.deserializeUser(function(id, done) {
+    done(null, id);
+});
+
+router.use(session({ secret: 'anything', resave: true, saveUninitialized: true }));
+router.use(passport.initialize());
+router.use(passport.session());
+router.use(bodyParser.json());
+
+var auth = () => {
+    return (req, res, next) => {
+        passport.authenticate('local', (error, user, info) => {
+            if(error) res.status(400).json({"statusCode" : 200 ,"message" : error});
+            req.login(user, function(error) {
+                if (error) return next(error);
+                next();
+            });
+        })(req, res, next);
+    }
+}
+
+router.post('/authenticate', auth() , (req, res) => {
+    res.status(200).json({"statusCode" : 200 ,"user" : req.user});
+});
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        if(username === "admin" && password === "admin"){
+            return done(null, username);
+        } else {
+            return done("unauthorized access", false);
+        }
+    }
+));
+
+/* get login status - may not be used */
+var isLoggedIn = (req, res, next) => {
+    console.log('session ', req.session);
+    if(req.isAuthenticated()){
+        //console.log('user ', req.session.passport.user)
+        return next()
+    }
+    return res.status(400).json({"statusCode" : 400, "message" : "not authenticated"})
+}
+router.get('/getLoginStatus', isLoggedIn, (req, res) => {
+    res.json("data is")
+})
+
 /* GET all details of all books */
 router.get('/books', function(req, res) { 
     books.length==0 ? res.status(404): res.status(200);
@@ -413,6 +489,5 @@ router.post('/interests/', function(req, res) {
     res.status(202);
     res.send(newinterest);
 })
-
 
 module.exports = router;

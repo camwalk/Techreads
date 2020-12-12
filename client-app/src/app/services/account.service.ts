@@ -10,8 +10,19 @@ export class AccountService {
 
   constructor(private http: HttpClient) {}
 
-  login(model: any) {
-    //account/login may also need changed
-    return this.http.post(this.url + 'account/login', model);
+  public isAuthenticated() : Boolean {
+    let userData = localStorage.getItem('userInfo')
+    if(userData && JSON.parse(userData)){
+      return true;
+    }
+    return false;
+  }
+
+  public setUserInfo(user){
+    localStorage.setItem('userInfo', JSON.stringify(user));
+  }
+
+  public login(model: any) {
+    return this.http.post(this.url + 'authenticate', {'username' : model.username, 'password' : model.password});
   }
 }
