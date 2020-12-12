@@ -5,8 +5,10 @@ var router = express.Router();
 var users =[
     {
         "id": "1",
-        "username": ["David Flanagan"], 
+        "username": ["NeilS"], 
         "password" : "Pa$$w0rd",
+        "firstname" : "Simon",
+        "lastname" : "Neil",
         //this should be corrected once interests have been defined
         "interests": [5,4],
     }
@@ -352,8 +354,8 @@ router.get('/books/authors/:term', function(req, res) {
   res.send(selectedbooks);
 })
 
-/* GET add rating for book by id */
-router.get('/books/rate/:id/:rating', function(req, res) { 
+/* POST new rating for book by id */
+router.post('/books/rate/:id/:rating', function(req, res) { 
   var id = req.params["id"];
   var rating = Number(req.params["rating"]);
   var book = books.find(x => x.id == id);
