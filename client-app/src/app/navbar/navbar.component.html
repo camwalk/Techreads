@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <a class="navbar-brand" href="#">Techreads</a>
+  <a class="navbar-brand" routerLink='/'>Techreads</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,17 +8,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" *ngIf="currentSignIn" routerLink="/books" routerLinkActive="active">Books</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Books</a>
+        <a class="nav-link" *ngIf="currentSignIn" routerLink="/interests" routerLinkActive="active">Interests</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" *ngIf="currentSignIn">Interests</a>
+        <a class="nav-link" *ngIf="currentSignIn" routerLink="/history" routerLinkActive="active">History</a>
       </li>
-      <li class="nav-item" *ngIf="currentSignIn">
-        <a class="nav-link" href="#">History</a>
-      </li>
+      
     </ul>
     <form *ngIf="!currentSignIn" #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="form-inline my-2">
       <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text" placeholder="Username">

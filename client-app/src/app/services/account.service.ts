@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +25,18 @@ export class AccountService {
   }
 
   public login(model: any) {
-    return this.http.post(this.url + 'authenticate', {'username' : model.username, 'password' : model.password});
+    return this.http.post(this.url + 'authenticate', {'username' : model.username, 'password' : model.password}).pipe(
+      map((response: any) => {
+        const user = Response;
+        if(user) {
+          //if authentication is added change this to take in token
+          localStorage.setItem('user', model.username);
+        }
+      })
+    )
+  }
+
+  public logout() {
+    localStorage.removeItem('user');
   }
 }
