@@ -4,6 +4,11 @@ var session = require('express-session');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var LocalStrategy = require('passport-local').Strategy;
+const jwt = require("jsonwebtoken");
+
+/* required for json */
+router.use(bodyParser.json());
+const accessTokenSecret = 'accesstokensecret';
 
 // CSWDConf API version 1.0
 var users =[
@@ -343,6 +348,7 @@ router.use(bodyParser.json());
 var auth = () => {
     return (req, res, next) => {
         passport.authenticate('local', (error, user, info) => {
+            //message does not work
             if(error) res.status(400).json({"statusCode" : 400 ,"message" : error});
             req.login(user, function(error) {
                 if (error) return next(error);
@@ -356,7 +362,6 @@ router.post('/authenticate', auth() , (req, res) => {
     res.status(200).json({"statusCode" : 200 ,"user" : req.user});
 });
 
-// hardcoded solution
 passport.use(new LocalStrategy(
     function(username, password, done) {
         var selectedUser = users.find(function (user) {
@@ -372,6 +377,8 @@ passport.use(new LocalStrategy(
         }
     }
 ));
+
+
 
 /* get login status - may not be used */
 var isLoggedIn = (req, res, next) => {

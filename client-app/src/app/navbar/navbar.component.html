@@ -14,16 +14,19 @@
         <a class="nav-link" href="#">Books</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Interests</a>
+        <a class="nav-link" href="#" *ngIf="currentSignIn">Interests</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="currentSignIn">
         <a class="nav-link" href="#">History</a>
       </li>
     </ul>
-    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="form-inline my-2 my-lg-0">
+    <form *ngIf="!currentSignIn" #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="form-inline my-2">
       <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text" placeholder="Username">
       <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="password" placeholder="Password">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+    </form>
+    <form *ngIf="currentSignIn" #loginForm="ngForm" (ngSubmit)="logout()" autocomplete="off" class="form-inline my-2">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
     </form>
   </div>
 </nav>
