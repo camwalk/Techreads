@@ -5,7 +5,6 @@ var passport = require('passport');
 var bodyParser = require('body-parser');
 var LocalStrategy = require('passport-local').Strategy;
 
-
 // CSWDConf API version 1.0
 var users =[
     {
@@ -14,8 +13,11 @@ var users =[
         "password" : "Pa$$w0rd",
         "firstname" : "Simon",
         "lastname" : "Neil",
-        //this should be corrected once interests have been defined
+        //this should be corrected once interests have been defined (categories?)
         "interests": [5,4],
+        // "history" : [
+        //     {},
+        // ]
     }
 ]
 
@@ -341,7 +343,7 @@ router.use(bodyParser.json());
 var auth = () => {
     return (req, res, next) => {
         passport.authenticate('local', (error, user, info) => {
-            if(error) res.status(400).json({"statusCode" : 200 ,"message" : error});
+            if(error) res.status(400).json({"statusCode" : 400 ,"message" : error});
             req.login(user, function(error) {
                 if (error) return next(error);
                 next();
@@ -354,11 +356,18 @@ router.post('/authenticate', auth() , (req, res) => {
     res.status(200).json({"statusCode" : 200 ,"user" : req.user});
 });
 
+// hardcoded solution
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        if(username === "admin" && password === "admin"){
+        var selectedUser = users.find(function (user) {
+            return user.username == username;
+        });
+        if (selectedUser.password == password)
+        {
             return done(null, username);
-        } else {
+        }
+        else
+        {
             return done("unauthorized access", false);
         }
     }
