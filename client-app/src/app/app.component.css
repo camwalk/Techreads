@@ -27,5 +27,7 @@
   height: 156.5%;
   opacity: 0.32;
   z-index: -1;
-
+}
+.container{
+  max-width: 99%
 }

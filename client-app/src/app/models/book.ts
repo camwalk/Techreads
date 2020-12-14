@@ -2,7 +2,7 @@
     export interface Book
     {
         id: number;
-        author: string;
+        authors: string;
         title: string;
         description: string;
         publisher: string;
