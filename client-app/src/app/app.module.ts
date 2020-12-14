@@ -12,6 +12,7 @@ import { HistoryComponent } from './history/history.component';
 import { BooksBrowseComponent } from './books/books-browse/books-browse.component';
 import { BooksDetailedComponent } from './books/books-detailed/books-detailed.component';
 import { LandingComponent } from './landing/landing.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LandingComponent } from './landing/landing.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ToastrModule
   ],
   providers: [],
   bootstrap: [AppComponent]
