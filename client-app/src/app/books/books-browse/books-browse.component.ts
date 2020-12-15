@@ -21,5 +21,4 @@ export class BooksBrowseComponent implements OnInit {
       this.books = books;
     });
   }
-
 }

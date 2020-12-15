@@ -406,7 +406,7 @@ router.get('/books/categories', function(req, res) {
     res.send(categories);
   })
   
-/* GET book by title */
+/* GET book by id */
 router.get('/books/:id', function(req, res) { 
     var selectedbooks = books.filter(function(book) {
       return book.id == req.params["id"];
