@@ -20,6 +20,7 @@ export class BooksDetailedComponent implements OnInit {
   getBookDetails() {
     this.bookService.getBook(this.route.snapshot.paramMap.get('id')).subscribe(book => {
       this.book = book;
+      console.log(book);
     })
   }
 }

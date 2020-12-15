@@ -412,7 +412,7 @@ router.get('/books/:id', function(req, res) {
       return book.id == req.params["id"];
     });
     selectedbooks.length==0 ? res.status(404): res.status(200);
-    res.send(selectedbooks);
+    res.send(selectedbooks[0]);
 })
 
 /* GET books by search term in description or title (TBD) */
