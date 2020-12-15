@@ -378,8 +378,6 @@ passport.use(new LocalStrategy(
     }
 ));
 
-
-
 /* get login status - may not be used */
 var isLoggedIn = (req, res, next) => {
     console.log('session ', req.session);
@@ -408,7 +406,7 @@ router.get('/books/categories', function(req, res) {
     res.send(categories);
   })
   
-/* GET book by id */
+/* GET book by title */
 router.get('/books/:id', function(req, res) { 
     var selectedbooks = books.filter(function(book) {
       return book.id == req.params["id"];

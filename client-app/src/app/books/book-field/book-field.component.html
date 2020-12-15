@@ -1,8 +1,12 @@
-<div class="card mb-4">
-    <div class="container">
+<div>
+  <a routerLink="/books/{{book.id}}">
+    <div class="card mb-4">
+      <div class="container">
         <b>{{book.title}}</b>
-    </div>
-    <div class="container">
+      </div>
+      <div class="container">
         by {{book.authors}}
+      </div>
     </div>
+  </a>
 </div>
