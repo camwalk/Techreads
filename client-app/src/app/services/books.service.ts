@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from '../models/book';
-import { Review } from '../models/review';
+import { History } from '../models/history';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,10 @@ export class BooksService {
 
   addHistory(id, username, datetime){
     return this.http.post(this.url + 'history', {'user' : username, "book" : id, "date": datetime});
+  }
+
+  getHistory(username): Observable<History[]>{
+    return this.http.get<History[]>(this.url + 'history/' + username);
   }
 
   

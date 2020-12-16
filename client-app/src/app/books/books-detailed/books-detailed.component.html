@@ -15,7 +15,7 @@
       </div>
       <div class="card-footer">
         <div class="btn-group d-flex">
-          <button class="btn btn-primary">Add to History</button>
+          <button class="btn btn-primary" (click)="addToHistory()">Add to History</button>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
         <h2>Ratings</h2>
         <div class="row">
           <div class="card mb-4 rating">
-            <form #loginForm="ngForm" (ngSubmit)="addRating()" autocomplete="off" class="form-inline my-2 my-lg-0">
+            <form #ratingForm="ngForm" (ngSubmit)="addRating()" autocomplete="off" class="form-inline my-2 my-lg-0">
               <div class="container-review">
                 <div class="dropdown my-2 my-sm-0">
                   <select name="demo" id="#">

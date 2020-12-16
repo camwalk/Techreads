@@ -7,13 +7,13 @@ export interface Book {
     year: number;
     isbn: string;
     category: string;
+    ratings: number[];
     reviews: Review[];
 }
 
 interface Review {
     reviewer: string;
     review: string;
-    rating: number;
 }
 
 interface Author {

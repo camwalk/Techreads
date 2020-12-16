@@ -20,9 +20,6 @@ var users =[
         "lastname" : "Neil",
         //this should be corrected once interests have been defined (categories?)
         "interests": [5,4],
-        // "history" : [
-        //     {},
-        // ]
     }
 ]
 
@@ -298,7 +295,8 @@ var books =[
 //var interests = []
 
 var history = [
-    {"user":"anon", "book":1, "date": new Date()}
+    {"user":"NeilS", "book":1, "date": new Date()},
+    {"user":"NeilS", "book":2, "date": new Date()}
 ]
 
 /* GET home page. */
