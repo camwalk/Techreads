@@ -5,7 +5,7 @@
   <div class="row">
     <div class="card mb-4 info">
       <div class="container-info">
-        <p>Name: {{book.title}} ({{book.year}})</p>
+        <p>Title: {{book.title}} ({{book.year}})</p>
         <p>Book ID: {{book.id}}</p>
         <p>Author(s): {{book.authors}}</p>
         <p>Description: {{book.description}}</p>
@@ -20,6 +20,30 @@
       </div>
     </div>
     <div class="col-8">
+      <div>
+        <h2>Ratings</h2>
+        <div class="row">
+          <div class="card mb-4 rating">
+            <form #loginForm="ngForm" (ngSubmit)="addRating()" autocomplete="off" class="form-inline my-2 my-lg-0">
+              <div class="container-review">
+                <div class="dropdown my-2 my-sm-0">
+                  <select name="demo" id="#">
+                    <option selected="selected" value="2">1/5</option>
+                    <option value="2">2/5</option>
+                    <option value="3">3/5</option>
+                    <option value="4">4/5</option>
+                    <option value="5">5/5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="rate">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Rate</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <h2>Reviews</h2>
       <div class="row" *ngFor="let review of reviews">
         <app-review-field [review]="review"></app-review-field>
       </div>
@@ -32,9 +56,7 @@
                   placeholder="Add a review here"></textarea>
               </div>
               <div class="submit">
-                <input name="rating" class="form-control rating" type="rating"
-                  placeholder="Rating">
-                  <button class="btn btn-success my-2 my-sm-0" type="submit">Add</button>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Add</button>
               </div>
             </form>
           </div>

@@ -20,5 +20,9 @@ export class BooksService {
     return this.http.get<Book>(this.url + 'books/' + id);
   }
 
-  addReview(id): Observable<Review>
+  addHistory(id, username, datetime){
+    return this.http.post(this.url + 'history', {'user' : username, "book" : id, "date": datetime});
+  }
+
+  
 }

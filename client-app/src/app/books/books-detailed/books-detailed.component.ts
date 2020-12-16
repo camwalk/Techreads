@@ -12,7 +12,8 @@ import { BooksService } from 'src/app/services/books.service';
 export class BooksDetailedComponent implements OnInit {
   book: Book;
   reviews: Review[];
-  
+  datetime = new Date();
+
   constructor(private bookService: BooksService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -28,7 +29,18 @@ export class BooksDetailedComponent implements OnInit {
     })
   }
 
-  addReview(){
-    
+  addToHistory(){
+    if (localStorage.getItem("user") != null){
+      this.bookService.addHistory(this.route.snapshot.paramMap.get('id'), localStorage.getItem("user"), this.datetime = new Date());
+      console.log("test");
+    }
+  }
+
+  addReview() {
+    //this.bookService.addReview(this.route.snapshot.paramMap.get('id'));
+  }
+
+  addRating() {
+
   }
 }

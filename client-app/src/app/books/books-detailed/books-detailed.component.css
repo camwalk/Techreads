@@ -8,6 +8,10 @@
   padding: 10px 20px;
 }
 
+h2{
+  margin-left: 90px;
+}
+
 .card.mb-4.info {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -27,6 +31,17 @@
   padding: 10px 10px;
 }
 
+.card.mb-4.rating {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  width: 140px;
+  display: block;
+  float: left;
+  margin-left: 100px;
+  padding: 10px 10px 10px 10px;
+}
+
 .mr-sm-2 {
   width: 777px;
   padding: 10px 10px 10px 10px;
@@ -35,9 +50,11 @@
 }
 
 .submit{
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
-.form-control.rating{
-  margin-right: 524px;
+.rate{
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }
