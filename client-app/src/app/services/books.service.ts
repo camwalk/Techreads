@@ -19,4 +19,6 @@ export class BooksService {
   getBook(id): Observable<Book> {
     return this.http.get<Book>(this.url + 'books/' + id);
   }
+
+  addReview(id): Observable<Review>
 }

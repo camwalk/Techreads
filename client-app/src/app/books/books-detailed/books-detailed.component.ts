@@ -27,4 +27,8 @@ export class BooksDetailedComponent implements OnInit {
       console.log(this.reviews)
     })
   }
+
+  addReview(){
+    
+  }
 }

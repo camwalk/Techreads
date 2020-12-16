@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container-info">
   <br><br><br><br>
   <h1>{{book.title}}</h1>
   <br>
   <div class="row">
-    <div class="card mb-4">
-      <div class="container">
+    <div class="card mb-4 info">
+      <div class="container-info">
         <p>Name: {{book.title}} ({{book.year}})</p>
         <p>Book ID: {{book.id}}</p>
         <p>Author(s): {{book.authors}}</p>
@@ -13,8 +13,32 @@
         <p>ISBN: {{book.isbn}}</p>
         <p>Category: {{book.category}}</p>
       </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class="btn btn-primary">Add to History</button>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row" *ngFor="let review of reviews">
-    <app-review-field [review]="review"></app-review-field>
+    <div class="col-8">
+      <div class="row" *ngFor="let review of reviews">
+        <app-review-field [review]="review"></app-review-field>
+      </div>
+      <div>
+        <div class="row">
+          <div class="card mb-4 review">
+            <form #loginForm="ngForm" (ngSubmit)="addReview()" autocomplete="off" class="form-inline my-2 my-lg-0">
+              <div class="container-review">
+                <textarea rows="3" name="review" class="form-control mr-sm-2" type="text"
+                  placeholder="Add a review here"></textarea>
+              </div>
+              <div class="submit">
+                <input name="rating" class="form-control rating" type="rating"
+                  placeholder="Rating">
+                  <button class="btn btn-success my-2 my-sm-0" type="submit">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
