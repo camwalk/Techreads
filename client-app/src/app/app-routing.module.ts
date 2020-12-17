@@ -7,11 +7,13 @@ import { InterestsComponent } from './interests/interests.component';
 import { HistoryComponent } from './history/history.component';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
+import { RecommendedComponent } from './books/recommended/recommended.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
   {path: 'books', component: BooksBrowseComponent},
   {path: 'books/:id', component: BooksDetailedComponent},
+  {path: 'recommended', component: RecommendedComponent},
   {path: 'interests', component: InterestsComponent},
   {path: 'history', component: HistoryComponent},
 ];

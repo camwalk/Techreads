@@ -1,0 +1,9 @@
+<div class="container">
+    <br><br><br><br>
+    <h1>Recommendations</h1>
+    <br>
+    <div class="row" *ngFor="let book of recBooks">
+      <app-book-field [book]="book"></app-book-field>
+    </div>
+  </div>
+  
