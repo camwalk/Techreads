@@ -10,48 +10,44 @@ import { BooksService } from 'src/app/services/books.service';
 })
 export class SearchComponent implements OnInit {
 
-  books: Book[]=[];
-  retrievedBooks: Book[]=[];
+  books: Book[] = [];
+  retrievedBooks: Book[] = [];
+  retrievedAuthors: any[] = [];
 
   constructor(private booksService: BooksService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.searchBooks(this.route.snapshot.paramMap.get('searchText'));
   }
-  
+
   searchBooks(searchText) {
     this.booksService.getBooks().subscribe(books => {
       this.retrievedBooks = books;
       this.retrievedBooks.forEach(book => {
-        if(book.title.includes(searchText.toString()))
-        {
+        this.retrievedAuthors.push(book.authors)
+        if (book.title.includes(searchText.toString())) {
           this.books.push(book);
         }
-        else if(book.description.includes(searchText.toString()))
-        {
+        else if (book.description.includes(searchText.toString())) {
           this.books.push(book);
         }
-        else if(book.category.includes(searchText.toString()))
-        {
+        else if (book.category.includes(searchText.toString())) {
           this.books.push(book);
         }
-        else if(book.authors.includes(searchText.toString()))
-        {
+        else if (book.isbn.includes(searchText.toString())) {
           this.books.push(book);
         }
-        else if(book.isbn.includes(searchText.toString()))
-        {
+        else if (book.publisher.includes(searchText.toString())) {
           this.books.push(book);
         }
-        else if(book.publisher.includes(searchText.toString()))
-        {
+        else if (book.year == (searchText.toString())) {
           this.books.push(book);
         }
-        else if(book.year == (searchText.toString()))
-        {
-          this.books.push(book);
-        }
-        console.log(this.books);
+        book.authors.forEach(author => {
+          if (author.toString().includes(searchText.toString())) {
+            this.books.push(book);
+          }
+        })
       });
     });
   }
