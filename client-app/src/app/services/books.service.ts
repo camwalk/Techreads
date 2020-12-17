@@ -58,4 +58,8 @@ export class BooksService {
     var review = { 'reviewer': username, 'review': reviewtext };
     return this.http.post<any>(this.url + 'books/review/' + id, { "reviewer": review.reviewer, "review": review.review });
   }
+
+  addRating(id, rating) {
+    return this.http.post<any>(this.url + 'books/rate/' + id + "/" + rating, {});
+  }
 }
