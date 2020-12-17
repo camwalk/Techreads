@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Interest } from '../models/interest';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-interests',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InterestsComponent implements OnInit {
 
-  constructor() { }
+  interests: Interest[] = [];
+
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
+    this.getUserInterests();
   }
 
+  getUserInterests() {
+    this.accountService.getInterests(localStorage.getItem("user")).subscribe(interests => {
+      for (var x of interests) {
+        this.interests.push(x);
+      }
+      console.log(this.interests);
+      });
+  }
 }

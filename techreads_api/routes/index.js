@@ -17,9 +17,7 @@ var users =[
         "username": ["NeilS"], 
         "password" : "Pa$$w0rd",
         "firstname" : "Simon",
-        "lastname" : "Neil",
-        //this should be corrected once interests have been defined (categories?)
-        "interests": [5,4],
+        "lastname" : "Neil"
     }
 ]
 
@@ -291,8 +289,10 @@ var books =[
     }
 ]
 
-//added to user instead
-//var interests = []
+
+var interests = [
+    {"user":"NeilS", "topic":"React"}
+]
 
 var history = [
     {"user":"NeilS", "book":1, "date": new Date()},
@@ -456,9 +456,11 @@ router.post('/books/rate/:id/:rating', function(req, res) {
 /* body should be of the form {"reviewer":"anon", "review":"Great book"}  */
 router.post('/books/review/:id', function(req, res) { 
   var id = req.params["id"];
+  console.log(id);
   var book = books.find(x => x.id == id);
+  console.log("book"+ book);
   var newreview = req.body;
-  book.reviews.push(newreview);     
+  book.reviews.push(newreview);
   res.status(202);
   res.send(book);
 })

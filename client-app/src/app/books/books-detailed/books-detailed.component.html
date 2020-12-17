@@ -28,7 +28,7 @@
               <div class="container-review">
                 <div class="dropdown my-2 my-sm-0">
                   <select name="demo" id="#">
-                    <option selected="selected" value="2">1/5</option>
+                    <option selected="selected" value="1">1/5</option>
                     <option value="2">2/5</option>
                     <option value="3">3/5</option>
                     <option value="4">4/5</option>
@@ -50,13 +50,13 @@
       <div>
         <div class="row">
           <div class="card mb-4 review">
-            <form #loginForm="ngForm" (ngSubmit)="addReview()" autocomplete="off" class="form-inline my-2 my-lg-0">
+            <form #reviewForm="ngForm" autocomplete="off" class="form-inline my-2 my-lg-0">
               <div class="container-review">
-                <textarea rows="3" name="review" class="form-control mr-sm-2" type="text"
+                <textarea id="reviewfield" rows="3" name="review" class="form-control mr-sm-2" type="text"
                   placeholder="Add a review here"></textarea>
               </div>
               <div class="submit">
-                <button class="btn btn-success my-2 my-sm-0" type="submit">Add</button>
+                <button class="btn btn-success my-2 my-sm-0" (click)="addReview()" type="submit">Add</button>
               </div>
             </form>
           </div>

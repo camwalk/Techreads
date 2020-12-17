@@ -1,4 +1,17 @@
 <div class="container">
   <br><br><br><br>
-  <h1>Books</h1>
+  <h1>Interests</h1>
+  <br>
+  <div class="row" *ngFor="let interest of interests">
+    <div>
+      <div class="card mb-4">
+        <div class="container">
+          <b>{{interest.topic}}</b>
+        </div>
+        <div class="button">
+        <button class="btn btn-danger my-2 my-sm-0">Remove</button>
+      </div>
+      </div>
+    </div>
+  </div>
 </div>

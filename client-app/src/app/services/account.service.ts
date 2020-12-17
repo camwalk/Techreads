@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators'
+import { Interest } from '../models/interest';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,9 @@ export class AccountService {
 
   public logout() {
     localStorage.removeItem('user');
+  }
+
+  getInterests(username): Observable<Interest[]> {
+    return this.http.get<Interest[]>(this.url + 'interests/' + username);
   }
 }

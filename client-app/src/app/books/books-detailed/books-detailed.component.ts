@@ -24,20 +24,22 @@ export class BooksDetailedComponent implements OnInit {
     this.bookService.getBook(this.route.snapshot.paramMap.get('id')).subscribe(book => {
       this.book = book;
       this.reviews = book.reviews;
-      console.log(book);
-      console.log(this.reviews)
     })
   }
 
   addToHistory(){
     if (localStorage.getItem("user") != null){
-      this.bookService.addHistory(this.route.snapshot.paramMap.get('id'), localStorage.getItem("user"), this.datetime = new Date());
+      this.bookService.addHistory(this.route.snapshot.paramMap.get('id'), localStorage.getItem("user"), this.datetime).subscribe();
       console.log("test");
     }
   }
 
   addReview() {
-    //this.bookService.addReview(this.route.snapshot.paramMap.get('id'));
+    var reviewtext = ((document.getElementById("reviewfield") as HTMLInputElement).value);
+    this.bookService.addReview(this.route.snapshot.paramMap.get('id'), reviewtext ,localStorage.getItem("user")).subscribe(data => {
+      this.reviews.push(data);
+    });
+    console.log("test");
   }
 
   addRating() {
