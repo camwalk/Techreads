@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
   login() {
@@ -28,6 +29,12 @@ export class NavbarComponent implements OnInit {
   logout() {
       this.currentSignIn = false;
       this.router.navigateByUrl('/');
+  }
+
+  search() {
+    var searchText = ((document.getElementById("searchField") as HTMLInputElement).value);
+    this.router.navigateByUrl('/search/' + searchText);
+    console.log(searchText);
   }
 
 }

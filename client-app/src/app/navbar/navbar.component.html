@@ -25,13 +25,13 @@
           placeholder="Password">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
       </form>
-      <form class="d-flex" *ngIf="currentSignIn">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="form-inline my-2 my-lg-0" *ngIf="currentSignIn">
+        <input id="searchField" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-success my-2 my-sm-0" (click)="search()" type="submit">Search</button>
       </form>
       <form *ngIf="currentSignIn" #loginForm="ngForm" (ngSubmit)="logout()" autocomplete="off"
         class="form-inline my-2 my-lg-0">
-        <button class="btn btn-success my-2 my-sm-0" type="submit">Logout</button>
+        <button class="btn btn-warning my-2 my-sm-0" type="submit">Logout</button>
       </form>
     </div>
   </div>

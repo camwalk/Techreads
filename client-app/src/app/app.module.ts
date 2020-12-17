@@ -15,7 +15,8 @@ import { LandingComponent } from './landing/landing.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BookFieldComponent } from './books/book-field/book-field.component';
 import { ReviewFieldComponent } from './books/review-field/review-field.component';
-import { RecommendedComponent } from './books/recommended/recommended.component';
+import { RecommendedComponent } from './books/books-recommended/recommended.component';
+import { SearchComponent } from './books/books-search/search.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RecommendedComponent } from './books/recommended/recommended.component'
     BookFieldComponent,
     ReviewFieldComponent,
     RecommendedComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
