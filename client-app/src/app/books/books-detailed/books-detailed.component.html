@@ -1,3 +1,5 @@
+<script src="node_modules/chart.js/Chart.min.js"></script>
+<script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 <div class="container-info">
   <br><br><br><br>
   <h1>{{book.title}}</h1>
@@ -22,6 +24,8 @@
     <div class="col-8">
       <div>
         <h2>Ratings</h2>
+        <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels"> chart-series="series"
+        </canvas>
         <div class="row">
           <div class="card mb-4 rating">
             <form #ratingForm="ngForm" autocomplete="off" class="form-inline my-2 my-lg-0">
@@ -37,7 +41,7 @@
                 </div>
               </div>
               <div class="rate">
-                <button (click)="addRating()"class="btn btn-success my-2 my-sm-0" type="submit">Rate</button>
+                <button (click)="addRating()" class="btn btn-success my-2 my-sm-0" type="submit">Rate</button>
               </div>
             </form>
           </div>
