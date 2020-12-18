@@ -17,6 +17,8 @@ import { BookFieldComponent } from './books/book-field/book-field.component';
 import { ReviewFieldComponent } from './books/review-field/review-field.component';
 import { RecommendedComponent } from './books/books-recommended/recommended.component';
 import { SearchComponent } from './books/books-search/search.component';
+import { ChartsModule } from 'ng2-charts';
+import { RatingsChartComponent } from './books/ratings-chart/ratings-chart.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { SearchComponent } from './books/books-search/search.component';
     ReviewFieldComponent,
     RecommendedComponent,
     SearchComponent,
+    RatingsChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { SearchComponent } from './books/books-search/search.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ToastrModule
+    ToastrModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
