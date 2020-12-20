@@ -77,6 +77,7 @@ export class BooksDetailedComponent implements OnInit {
     var reviewtext = ((document.getElementById("reviewfield") as HTMLInputElement).value);
     this.bookService.addReview(this.route.snapshot.paramMap.get('id'), reviewtext, localStorage.getItem("user")).subscribe(data => {
       this.reviews.push(data);
+      this.getBookDetails();
     });
   }
 

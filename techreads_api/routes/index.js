@@ -294,7 +294,6 @@ var interests = [
 ]
 
 var history = [
-    {"user":"NeilS", "book":1, "date": new Date()},
     {"user":"NeilS", "book":2, "date": new Date()}
 ]
 
